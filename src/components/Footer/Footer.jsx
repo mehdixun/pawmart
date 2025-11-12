@@ -1,64 +1,97 @@
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { MdPets } from "react-icons/md";
-
 
 const Footer = () => {
   return (
-    <footer className="bg-indigo-50 text-gray-800 py-1">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 mt-10">
-        <div className="text-center lg:text-left">
-          <Link to="/" className="text-4xl font-bold text-indigo-600 flex gap-1 hover:text-indigo-700 items-center">
-            <MdPets size={30}/> PawMart
+    <footer className="bg-indigo-50 text-gray-800 py-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+        {/* Logo & About */}
+        <div className="text-center md:text-left">
+          <Link
+            to="/"
+            className="flex items-center justify-center md:justify-start text-4xl font-bold text-indigo-600 gap-2 hover:text-indigo-700"
+          >
+            <MdPets size={30} /> PawMart
           </Link>
-
-          <p className="text-gray-600 mt-2 max-w-xs">
+          <p className="text-gray-600 mt-3 max-w-xs mx-auto md:mx-0">
             PawMart connects local pet owners and buyers for adoption and pet care products.
           </p>
         </div>
 
-        {/* Footer links */}
+        {/* Quick Links */}
         <div className="text-center">
-          <h3 className="text-lg font-bold mb-2">Quick Links</h3>
-          <ul className="text-indigo-600 font-semibold">
-            <li><a href="/" className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300">Home</a></li>
-
-            <li><a className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300 mt-1">Services</a></li>
-
-            <li><a href className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300 mt-1">Contact</a></li>
-
-            <li><a href className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300 mt-1">Terms and condition</a></li>
+          <h3 className="text-lg font-bold mb-3">Quick Links</h3>
+          <ul className="text-indigo-600 font-semibold space-y-2">
+            <li>
+              <Link
+                to="/"
+                className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300"
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terms"
+                className="hover:border-b-2 inline-block transform hover:scale-105 transition duration-300"
+              >
+                Terms & Conditions
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Contact */}
-        <div className="text-center">
-          <h3 className="text-lg font-bold mb-2">Contact</h3>
+        {/* Contact & Social */}
+        <div className="text-center md:text-left">
+          <h3 className="text-lg font-bold mb-3">Contact</h3>
           <p className="text-indigo-600 font-semibold">Email: pawmart@gmail.com</p>
           <p className="text-indigo-600 font-semibold">Phone: 01336458100</p>
-          <div className="flex space-x-5 mt-3">
 
-            {/* Social link */}
-            <div className="flex gap-5 items-center ml-35">
-              <a href="" className="text-indigo-600 hover:text-indigo-800 inline-block transform hover:scale-120 transition duration-200"><FaFacebook size={30} />
+          <div className="flex justify-center md:justify-start mt-4 gap-5">
+            <a
+              href="#"
+              className="text-indigo-600 hover:text-indigo-800 transform hover:scale-125 transition duration-200"
+            >
+              <FaFacebook size={30} />
             </a>
-
-            <a href="" className="text-cyan-500 hover:text-cyan-700 inline-block transform hover:scale-120 transition duration-200"><FaInstagram size={30} />
+            <a
+              href="#"
+              className="text-pink-500 hover:text-pink-700 transform hover:scale-125 transition duration-200"
+            >
+              <FaInstagram size={30} />
             </a>
-
-            <a href="" className="text-gray-800 hover:text-gray-900 inline-block transform hover:scale-118 transition duration-200"><BsTwitterX size={30} />
-          </a>
-          
-            </div>
+            <a
+              href="#"
+              className="text-gray-800 hover:text-gray-900 transform hover:scale-125 transition duration-200"
+            >
+              <BsTwitterX size={30} />
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="mt-8 text-center text-gray-600 text-sm">
-        &copy; 2025 ShigroiService. All rights reserved.
+      {/* Footer Bottom */}
+      <div className="mt-10 text-center text-gray-600 text-sm">
+        &copy; 2025 PawMart. All rights reserved.
       </div>
     </footer>
   );

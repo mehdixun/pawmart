@@ -25,7 +25,7 @@ const MyListings = () => {
       });
       const data = await res.json();
       if (data.deletedCount > 0) {
-        toast.success("Listing deleted successfully!");
+        toast.success("Listing deleted successfully 👌");
         setListings(listings.filter((item) => item._id !== id));
       }
     } catch (err) {
@@ -35,18 +35,22 @@ const MyListings = () => {
   };
 
   return (
-    <div className="my-20 px-5 container mx-auto">
+    <div className="py-20 container mx-auto px-4 min-h-screen">
       <Toaster position="top-center" />
-      <h2 className="text-3xl font-bold text-indigo-600 mb-6">My Listings</h2>
+      <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center">
+        My Listings
+      </h2>
 
       {listings.length === 0 ? (
-        <p className="text-center text-gray-500">You have not added any listings yet.</p>
+        <p className="text-center text-gray-500 text-lg mt-10">
+          You have not added any listings yet.
+        </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {listings.map((item) => (
             <div
               key={item._id}
-              className="card bg-indigo-50 shadow-lg rounded-xl hover:scale-105 transition-transform duration-300"
+              className="card bg-white shadow-lg rounded-xl hover:shadow-2xl hover:scale-105 transition-transform duration-300"
             >
               <figure className="overflow-hidden rounded-t-xl">
                 <img
@@ -59,16 +63,16 @@ const MyListings = () => {
                 <h2 className="card-title text-xl font-bold">{item.name}</h2>
                 <p className="text-gray-500 font-medium">Category: {item.category}</p>
                 <p className="text-indigo-600 font-semibold">
-                  {item.price && item.price > 0
-                    ? `৳${item.price}`
-                    : "Free for Adoption"}
+                  {item.price && item.price > 0 ? `৳${item.price}` : "Free for Adoption"}
                 </p>
                 <p className="text-gray-400 text-sm mt-1">📍 {item.location}</p>
 
                 <div className="card-actions justify-end mt-4 space-x-2">
-                  <button className="btn btn-sm btn-primary">Edit</button>
+                  <button className="btn btn-sm btn-primary hover:bg-indigo-700 hover:scale-105 transition">
+                    Edit
+                  </button>
                   <button
-                    className="btn btn-sm btn-error"
+                    className="btn btn-sm btn-error hover:scale-105 transition"
                     onClick={() => handleDelete(item._id)}
                   >
                     Delete

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,34 +16,19 @@ const Register = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Password validation
   const validatePassword = (password) => {
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const isValidLength = password.length >= 6;
-
-    if (!hasUpperCase)
-      return "Password must contain at least one uppercase letter.";
-    if (!hasLowerCase)
-      return "Password must contain at least one lowercase letter.";
-    if (!hasNumber)
-      return "Password must contain at least one number.";
-    if (!isValidLength)
-      return "Password must be at least 6 characters long.";
-
+    if (!/[A-Z]/.test(password)) return "Password must have an uppercase letter.";
+    if (!/[a-z]/.test(password)) return "Password must have a lowercase letter.";
+    if (!/\d/.test(password)) return "Password must have a number.";
+    if (password.length < 6) return "Password must be at least 6 characters.";
     return null;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const error = validatePassword(formData.password);
     if (error) {
       toast.error(error);
@@ -57,8 +43,9 @@ const Register = () => {
         photoURL: formData.photo || "https://i.ibb.co/Fx2g3mD/user.png",
       });
 
-      toast.success("Registration successful!");
+      toast.success("✅ Registration successful!");
       setFormData({ name: "", email: "", password: "", photo: "" });
+      navigate("/");
     } catch (err) {
       console.error(err);
       toast.error("Registration failed. Try again!");
@@ -68,118 +55,105 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
+        toast.success("✅ Registered with Google!");
+        navigate("/");
         console.log(result.user);
-        toast.success("Signed in with Google!");
       })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Google sign-in failed!");
+      .catch((err) => {
+        console.error(err);
+        toast.error("Google sign-in failed.");
       });
   };
 
   return (
-    <div className="card mb-50 mt-10 bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card mt-10 mb-20 w-full max-w-sm mx-auto bg-base-100 shadow-2xl">
+      <Toaster position="top-center" />
       <div className="card-body">
-        <Toaster position="top-center" reverseOrder={false} />
-
-        <form onSubmit={handleSubmit}>
-          <fieldset className="fieldset">
-            {/* Name */}
+        <h2 className="text-2xl font-bold text-indigo-600 text-center mb-4">Register</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
             <label className="label">Name</label>
             <input
               type="text"
               name="name"
-              className="input"
-              placeholder="Name"
               value={formData.name}
               onChange={handleChange}
+              placeholder="Name"
+              className="input input-bordered w-full"
               required
             />
+          </div>
 
-            {/* Email */}
+          <div>
             <label className="label">Email</label>
             <input
               type="email"
               name="email"
-              className="input"
-              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="Email"
+              className="input input-bordered w-full"
               required
             />
+          </div>
 
-            {/* Password */}
+          <div>
             <label className="label">Password</label>
             <input
               type="password"
               name="password"
-              className="input"
-              placeholder="Password"
               value={formData.password}
               onChange={handleChange}
+              placeholder="Password"
+              className="input input-bordered w-full"
               required
             />
+          </div>
 
-            {/* Photo URL */}
-            <label className="label">Photo</label>
+          <div>
+            <label className="label">Photo URL</label>
             <input
               type="text"
               name="photo"
-              className="input"
-              placeholder="Photo URL"
               value={formData.photo}
               onChange={handleChange}
+              placeholder="Optional"
+              className="input input-bordered w-full"
             />
+          </div>
 
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-
-            <button type="submit" className="btn btn-neutral mt-4">
-              Register
-            </button>
-          </fieldset>
+          <button
+            type="submit"
+            className="btn w-full bg-indigo-500 text-white hover:bg-indigo-700 transition hover:scale-105"
+          >
+            Register
+          </button>
         </form>
 
         <p className="text-center mt-2">
           Already have an account?{" "}
-          <Link
-            to="/login"
-            className="text-indigo-500 font-bold hover:underline"
-          >
+          <Link to="/login" className="text-indigo-500 font-bold hover:underline">
             Sign in
           </Link>
         </p>
 
         <button
           onClick={handleGoogleSignIn}
-          className="btn bg-white text-black border-[#e5e5e5] mt-3 w-full flex items-center justify-center gap-2"
+          className="btn w-full mt-4 bg-white text-black border border-gray-300 flex items-center justify-center gap-2 hover:scale-105 transition"
         >
           <svg
             aria-label="Google logo"
-            width="16"
-            height="16"
+            width="20"
+            height="20"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
           >
             <g>
-              <path d="m0 0H512V512H0" fill="#fff"></path>
-              <path
-                fill="#34a853"
-                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
-              <path
-                fill="#fbbc02"
-                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-              ></path>
-              <path
-                fill="#ea4335"
-                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
+              <path d="M0 0H512V512H0z" fill="#fff" />
+              <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
+              <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
+              <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73" />
+              <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
             </g>
           </svg>
           Register with Google
