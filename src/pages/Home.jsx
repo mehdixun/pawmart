@@ -3,6 +3,7 @@ import { FaPaw, FaBone, FaShoppingBag, FaMedkit } from "react-icons/fa";
 import RecentListings from "../components/RecentListings";
 import AddListing from "./AddListing";
 
+
 const banners = [
   "https://i.ibb.co/YBwDYqK3/banner1.jpg",
   "https://i.ibb.co/hFWYf4mk/banner2.jpg",
@@ -155,9 +156,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {
-        <AddListing></AddListing>
-      }
+      
     </div>
   );
 };

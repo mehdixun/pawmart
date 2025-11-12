@@ -23,7 +23,6 @@ const AddListing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Price default 0 for pets
     if (formData.category === "Pets") {
       formData.price = 0;
     }

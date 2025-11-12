@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const RecentListings = () => {
   const [listings, setListings] = useState([]);
 
@@ -14,7 +15,7 @@ const RecentListings = () => {
   return (
     <div className="my-10 px-5 container mx-auto">
       <h2 className="text-3xl font-bold text-center mb-8 text-indigo-600">
-         Recent Pet Listings
+        Recent Pet Listings
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -41,7 +42,7 @@ const RecentListings = () => {
 
               <div className="card-actions justify-end mt-4">
                 <Link
-                  to={`/details/${pet._id}`}
+                  to={`/listing-details/${pet._id}`}
                   className="btn btn-sm btn-primary hover:bg-indigo-700 text-white"
                 >
                   See Details

@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdPets } from "react-icons/md";
 import { AuthContext } from '../../provider/AuthProvider';
 
+
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
@@ -22,6 +23,7 @@ const Navbar = () => {
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/" className={navLinkClass}>Home</NavLink>
       </li>
+
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/pets&Supplies" className={navLinkClass}>Pets & Supplies</NavLink>
       </li>
@@ -33,15 +35,19 @@ const Navbar = () => {
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/" className={navLinkClass}>Home</NavLink>
       </li>
+
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/pets&Supplies" className={navLinkClass}>Pets & Supplies</NavLink>
       </li>
+
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/add-listing" className={navLinkClass}>Add Listing</NavLink>
       </li>
+
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/my-listings" className={navLinkClass}>My Listings</NavLink>
       </li>
+      
       <li className='transition hover:scale-110 hover:underline'>
         <NavLink to="/my-orders" className={navLinkClass}>My Orders</NavLink>
       </li>

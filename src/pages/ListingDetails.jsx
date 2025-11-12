@@ -6,11 +6,10 @@ import OrderModal from "../components/OrderModal";
 
 const ListingDetails = () => {
   const { user } = useContext(AuthContext);
-  const { id } = useParams(); // Listing ID from route
+  const { id } = useParams();
   const [listing, setListing] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch listing details
   useEffect(() => {
     fetch(`http://localhost:3000/products/${id}`)
       .then((res) => res.json())
@@ -38,7 +37,7 @@ const ListingDetails = () => {
           <p><strong>Description:</strong> {listing.description}</p>
           <p>
             <strong>Price:</strong>{" "}
-            {listing.price ? `৳${listing.price}` : "Free for Adoption"}
+            {listing.price ? `${listing.price} taka` : "Free for Adoption"}
           </p>
           <p><strong>Location:</strong> {listing.location}</p>
 

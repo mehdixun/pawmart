@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-indigo-50 text-gray-800 py-1">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 mt-10">
-        <div className="text-center lg: text-left">
+        <div className="text-center lg:text-left">
           <Link to="/" className="text-4xl font-bold text-indigo-600 flex gap-1 hover:text-indigo-700 items-center">
             <MdPets size={30}/> PawMart
           </Link>
@@ -44,11 +44,14 @@ const Footer = () => {
             {/* Social link */}
             <div className="flex gap-5 items-center ml-35">
               <a href="" className="text-indigo-600 hover:text-indigo-800 inline-block transform hover:scale-120 transition duration-200"><FaFacebook size={30} />
-</a>
+            </a>
+
             <a href="" className="text-cyan-500 hover:text-cyan-700 inline-block transform hover:scale-120 transition duration-200"><FaInstagram size={30} />
-</a>
+            </a>
+
             <a href="" className="text-gray-800 hover:text-gray-900 inline-block transform hover:scale-118 transition duration-200"><BsTwitterX size={30} />
-</a>
+          </a>
+          
             </div>
           </div>
         </div>

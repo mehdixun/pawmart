@@ -8,9 +8,11 @@ const HomeLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
+
             <Outlet>
-                <Home></Home>
+            <Home></Home>
             </Outlet>
+            
             <Footer></Footer>
         </div>
     );
