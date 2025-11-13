@@ -15,7 +15,7 @@ const MyOrders = () => {
   }, [user]);
 
   return (
-    <div className="my-20 px-5 container mx-auto">
+    <div className="my-20 px-5 container mx-auto ">
       <h2 className="text-3xl font-bold text-indigo-600 mb-6 text-center">
         My Orders
       </h2>
@@ -24,8 +24,8 @@ const MyOrders = () => {
         <p className="text-center text-gray-500">No orders found 😕</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full border">
-            <thead className="bg-indigo-100">
+          <table className="table w-full bg-indigo-50 border-2 border-indigo-500">
+            <thead className="bg-indigo-200">
               <tr>
                 <th>Product Name</th>
                 <th>Buyer Name</th>

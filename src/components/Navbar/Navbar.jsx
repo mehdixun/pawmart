@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { MdPets } from "react-icons/md";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
+import DarkModeToogle from"../DarkModeToggle"
 
 
 const Navbar = () => {
@@ -120,6 +121,7 @@ const Navbar = () => {
 
         {/* Right nav */}
         <div className="flex items-center gap-3">
+          <DarkModeToogle></DarkModeToogle>
           {user ? (
             <>
               <img
@@ -134,6 +136,7 @@ const Navbar = () => {
               >
                 Log Out
               </button>
+              
             </>
           ) : (
             <>
