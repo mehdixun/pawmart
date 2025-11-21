@@ -90,7 +90,6 @@ const Navbar = () => {
           <MdPets size={30} />
           PawMart
         </Link>
-        <DarkModeToogle></DarkModeToogle>
 
         <ul className="hidden lg:flex space-x-4">{user ? privateLinks : publicLinks}</ul>
 
