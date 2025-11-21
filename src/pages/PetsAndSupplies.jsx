@@ -20,7 +20,7 @@ const PetsAndSupplies = () => {
     const queryParam = categoryMap[filterCategory]
       ? `?category=${encodeURIComponent(categoryMap[filterCategory])}`
       : "";
-    fetch(`http://localhost:3000/products${queryParam}`)
+    fetch(`https://pawmart-server-six.vercel.app/products${queryParam}`)
       .then((res) => res.json())
       .then((data) => setListings(data))
       .catch((err) => console.error("Error fetching listings:", err))

@@ -11,7 +11,7 @@ const MyListings = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/products?email=${user.email}`)
+    fetch(`https://pawmart-server-six.vercel.app/products?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setListings(data))
       .catch((err) => console.error(err));
