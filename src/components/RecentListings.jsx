@@ -5,7 +5,7 @@ const RecentListings = () => {
   const [listings, setListings] = useState([]);
 
   useEffect(() => {
-    fetch("https://pawmart-server-six.vercel.app/")
+    fetch("https://pawmart-server-six.vercel.app/products/recent")
       .then((res) => res.json())
       .then((data) => {
         

@@ -8,7 +8,7 @@ const CategoryFilteredProduct = () => {
   useEffect(() => {
     document.title = `${categoryName} | PawMart`;
 
-    fetch(`http://localhost:3000/products?category=${categoryName}`)
+    fetch(`https://pawmart-server-six.vercel.app/products?category=${categoryName}`)
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error(err));

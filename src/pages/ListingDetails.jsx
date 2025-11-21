@@ -11,7 +11,7 @@ const ListingDetails = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products/${id}`)
+    fetch(`https://pawmart-server-six.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => setListing(data))
       .catch((err) => console.error(err));
