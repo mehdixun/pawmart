@@ -1,9 +1,7 @@
 # Project Name: PawMart – Pet Adoption & Supply Portal  
 
 **Live Site:**   
-**Server Link:**   
-**Client Repo:**   
-**Server Repo:**   
+https://assignment-10-pawmart.netlify.app/
 
 ---
 
