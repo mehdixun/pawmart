@@ -68,7 +68,7 @@ const AddListing = () => {
             type="text"
             name="name"
             placeholder="Product / Pet Name"
-            className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="input bg-gray-200 input-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.name}
             onChange={handleChange}
             required
@@ -79,7 +79,7 @@ const AddListing = () => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="select select-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="select bg-gray-200 select-bordered w-full focus:ring-2 focus:ring-indigo-400"
           >
             <option value="Pets">Pets</option>
             <option value="Food">Food</option>
@@ -92,7 +92,7 @@ const AddListing = () => {
             type="number"
             name="price"
             placeholder="Price"
-            className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="input bg-gray-300 input-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.price}
             onChange={handleChange}
             disabled={formData.category === "Pets"}
@@ -103,7 +103,7 @@ const AddListing = () => {
             type="text"
             name="location"
             placeholder="Location"
-            className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="input bg-gray-200 input-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.location}
             onChange={handleChange}
             required
@@ -113,7 +113,7 @@ const AddListing = () => {
           <textarea
             name="description"
             placeholder="Description"
-            className="textarea textarea-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="textarea bg-gray-200 textarea-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.description}
             onChange={handleChange}
             required
@@ -124,7 +124,7 @@ const AddListing = () => {
             type="text"
             name="image"
             placeholder="Image URL"
-            className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="input bg-gray-200 input-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.image}
             onChange={handleChange}
             required
@@ -134,7 +134,7 @@ const AddListing = () => {
           <input
             type="date"
             name="date"
-            className="input input-bordered w-full focus:ring-2 focus:ring-indigo-400"
+            className="input bg-gray-200 input-bordered w-full focus:ring-2 focus:ring-indigo-400"
             value={formData.date}
             onChange={handleChange}
             required
@@ -144,14 +144,14 @@ const AddListing = () => {
           <input
             type="email"
             name="email"
-            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+            className="input bg-gray-200 input-bordered w-full cursor-not-allowed"
             value={formData.email}
             readOnly
           />
 
           <button
             type="submit"
-            className="btn w-full bg-indigo-500 text-white font-semibold hover:bg-indigo-700 transition hover:scale-105"
+            className="btn btn-sm btn-outline w-full font-bold text-lg btn-primary"
           >
             Add Listing
           </button>

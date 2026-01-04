@@ -51,7 +51,7 @@ const MyOrders = () => {
         <h2 className="text-3xl font-bold text-indigo-600">My Orders</h2>
         <button
           onClick={handleDownloadPDF}
-          className="btn btn-primary hover:scale-105 transition"
+          className="btn btn-sm btn-outline font-bold text-lg btn-primary"
         >
          Download Report
         </button>
@@ -70,7 +70,7 @@ const MyOrders = () => {
                 <th>Date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-gray-500">
               {orders.map((o) => (
                 <tr key={o._id}>
                   <td>{o.productName}</td>

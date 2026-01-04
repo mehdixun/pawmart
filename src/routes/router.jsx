@@ -11,6 +11,8 @@ import PrivateRoute from "../provider/PrivateRoute";
 import MyOrders from "../pages/MyOrders";
 import PetsAndSupplies from "../pages/PetsAndSupplies";
 import MyListing from "../pages/MyListings";
+import MyDashboard from "../pages/MyDashboard";
+import AboutUs from "../pages/AboutUs";
 import CategoryFilteredProduct from "../pages/CategoryFilteredProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,6 +46,11 @@ const router = createBrowserRouter([
         <HomeLayoutWithToast></HomeLayoutWithToast>
       </Register> },
 
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+
       // 🔒 Private Routes
       {
         path: "/add-listing",
@@ -53,12 +60,33 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // Dashboard Routes
+      {
+        path: "/my-dashboard",
+        element: (
+          <PrivateRoute>
+            <MyDashboard></MyDashboard>
+          </PrivateRoute>
+        ),
+        children: [
+          {index: true, element: <h2 className="text-3xl text-center font-bold mb-6 text-indigo-600 dark:text-indigo-400"> My Dashboard </h2>},
+          {
+            path: "my-listings",
+            element: <MyListing></MyListing>,
+          },
+          {
+            path: "my-orders",
+            element: <MyOrders></MyOrders>,
+          },
+         
+        ],
+      },
       {
         path: "/listing-details/:id",
         element: (
-          <PrivateRoute>
+          
             <ListingDetails></ListingDetails>
-          </PrivateRoute>
+          
         ),
       },
       {

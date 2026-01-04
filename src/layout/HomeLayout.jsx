@@ -1,21 +1,26 @@
-import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
-import { Outlet } from 'react-router';
-import Footer from '../components/Footer/Footer';
-import Home from '../pages/Home';
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const HomeLayout = () => {
-    return (
-        <div>
-            <Navbar></Navbar>
+  const location = useLocation();
 
-            <Outlet>
-            <Home></Home>
-            </Outlet>
-            
-            <Footer></Footer>
-        </div>
-    );
+  const isDashboard = location.pathname.startsWith("/my-dashboard");
+
+  return (
+    <div className="min-h-screen flex flex-col bg-base-200 dark:bg-neutral text-neutral dark:text-white">
+      
+      
+      <Navbar />
+
+      <main className="flex-1">
+        <Outlet />
+      </main>
+
+      {!isDashboard && <Footer />}
+    </div>
+  );
 };
 
 export default HomeLayout;
